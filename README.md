@@ -18,7 +18,7 @@ A high-end, premium real-time weather application featuring a sleek Red and Blac
 - **Premium Design System**: Sophisticated theme using deep blacks and glowing neon red accents.
 - **Dynamic AI Sceneries**: Custom high-tech illustrations for Clear, Cloudy, Rainy, Stormy, and Snowy conditions that update automatically.
 - **Interactive Particle Background**: Connected particle effect that responds to mouse movement using `tsparticles`.
-- **Real-Time Data**: Live weather updates and 5-day forecasts powered by OpenWeather API.
+- **Real-Time Data**: Live weather updates and 5-day forecasts powered by **Open-Meteo** — 100% free, no API key required.
 - **Auto-Clear Search**: Smooth search experience with an automatically clearing input field.
 - **Responsive Design**: Fully optimized for mobile and desktop viewing.
 
@@ -28,7 +28,7 @@ A high-end, premium real-time weather application featuring a sleek Red and Blac
 - **Styling**: SCSS (Sass)
 - **Visuals**: AI-Generated Scenery, tsparticles
 - **Build Tool**: Vite
-- **API**: OpenWeatherMap
+- **API**: [Open-Meteo](https://open-meteo.com/) (Free, Open-Source, No Key Required)
 
 ## 🛠️ Getting Started
 
@@ -59,9 +59,16 @@ A high-end, premium real-time weather application featuring a sleek Red and Blac
    npm run dev
    ```
 
-## 🔑 Weather API Key
+## ⚡ No API Key Required
 
-To use the application, you'll need an API key from [OpenWeatherMap](https://openweathermap.org/api). Replace the `API_KEY` placeholder in `src/js/weather-service.js` with your actual key.
+This project uses **[Open-Meteo](https://open-meteo.com/)** — a fully open-source weather API that is:
+
+- ✅ **100% Free** — No credit card, no subscription
+- ✅ **No Registration** — Just clone and run
+- ✅ **No Rate Limits** — For personal & open-source use
+- ✅ **Reliable** — Backed by national weather services
+
+Just clone the project and `npm run dev` — it works out of the box! 🚀
 
 ## 📝 License
 
