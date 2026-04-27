@@ -1,0 +1,395 @@
+// Variables & Reset
+$primary-red: #ff003c;
+$bg-black: #050505;
+$card-bg: rgba(15, 15, 15, 0.7);
+$text-white: #ffffff;
+$text-gray: #a0a0a0;
+$glow-shadow: 0 0 20px rgba(255, 0, 60, 0.3);
+$font-family: 'Outfit', sans-serif;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $bg-black;
+    color: $text-white;
+    font-family: $font-family;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+#tsparticles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.app-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+// Header & Search
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            
+            .highlight {
+                color: $primary-red;
+                text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
+            }
+        }
+        
+        .logo-icon {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+
+    .search-wrapper {
+        display: flex;
+        background: $card-bg;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+
+        &:focus-within {
+            border-color: $primary-red;
+            box-shadow: $glow-shadow;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            width: 100%;
+            outline: none;
+            font-family: inherit;
+            font-size: 1rem;
+
+            &::placeholder {
+                color: $text-gray;
+            }
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            color: $primary-red;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            transition: transform 0.2s;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+// Weather Display
+.weather-display {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.main-card {
+    background: $card-bg;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 3rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, $primary-red, transparent);
+    }
+
+    .current-weather {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+
+        @media (max-width: 600px) {
+            flex-direction: column-reverse;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #current-date {
+            color: $text-gray;
+            margin-bottom: 1.5rem;
+        }
+
+        .temp-container {
+            font-size: 6rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: $text-white;
+
+            .unit {
+                font-size: 2rem;
+                vertical-align: top;
+                color: $primary-red;
+            }
+        }
+
+        #weather-desc {
+            font-size: 1.2rem;
+            text-transform: capitalize;
+            color: $text-gray;
+        }
+
+        .weather-icon-large {
+            img {
+                width: 150px;
+                height: 150px;
+                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+            }
+        }
+    }
+}
+
+.weather-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+
+    .stat-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .label {
+            color: $text-gray;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .value {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+    }
+}
+
+// Forecast
+.forecast-section {
+    margin-top: 2rem;
+
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        padding-left: 0.5rem;
+        border-left: 4px solid $primary-red;
+    }
+
+    .forecast-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        }
+    }
+
+    .forecast-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: rgba(255, 0, 60, 0.1);
+            border-color: rgba(255, 0, 60, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .day {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            margin: 0.5rem 0;
+        }
+
+        .temp {
+            font-size: 1.2rem;
+            font-weight: 800;
+            
+            .min {
+                font-size: 0.9rem;
+                color: $text-gray;
+                margin-left: 0.3rem;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+// Utilities
+.hidden { display: none !important; }
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 5rem;
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 0, 60, 0.1);
+        border-top-color: $primary-red;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+}
+
+.error-message {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #ff4d4d;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+}
+
+// Animations
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.weather-content:not(.hidden) {
+    animation: fadeInSlide 0.8s ease-out forwards;
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+    
+    &:hover {
+        background: $primary-red;
+    }
+}
+
+// Glass Glow Effect
+.main-card {
+    &::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at center, rgba(255, 0, 60, 0.05) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: -1;
+    }
+}
+
+// Responsive tweaks
+@media (max-width: 480px) {
+    .app-container {
+        padding: 1rem;
+    }
+    
+    .main-card {
+        padding: 1.5rem;
+        
+        .current-weather .temp-container {
+            font-size: 4rem;
+        }
+    }
+}

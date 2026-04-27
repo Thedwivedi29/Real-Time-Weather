@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Weather | Premium Real-Time Data</title>
+    <meta name="description" content="A premium real-time weather application with a sleek red and black aesthetic.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/styles/main.scss">
+</head>
+<body>
+    <div id="tsparticles"></div>
+    
+    <main class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">⛅</span>
+                <h1>RealTime<span class="highlight">Weather</span></h1>
+            </div>
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <input type="text" id="city-input" placeholder="Search city..." autocomplete="off">
+                    <button id="search-btn">
+                        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    </button>
+                </div>
+                <div id="suggestions" class="suggestions-list"></div>
+            </div>
+        </header>
+
+        <section class="weather-display" id="weather-display">
+            <!-- Loading State -->
+            <div class="loader" id="loader">
+                <div class="spinner"></div>
+                <p>Fetching weather data...</p>
+            </div>
+
+            <!-- Content will be injected here -->
+            <div id="weather-content" class="weather-content hidden">
+                <div class="main-card">
+                    <div class="current-weather">
+                        <div class="info">
+                            <h2 id="city-name">London, UK</h2>
+                            <p id="current-date">Monday, 27 April</p>
+                            <div class="temp-container">
+                                <span id="temperature">24</span><span class="unit">°C</span>
+                            </div>
+                            <p id="weather-desc">Cloudy sky</p>
+                        </div>
+                        <div class="weather-icon-large">
+                            <img id="main-icon" src="" alt="weather icon">
+                        </div>
+                    </div>
+
+                    <div class="weather-stats">
+                        <div class="stat-item">
+                            <span class="label">Real Feel</span>
+                            <span class="value" id="feels-like">26°C</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="label">Humidity</span>
+                            <span class="value" id="humidity">45%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="label">Wind Speed</span>
+                            <span class="value" id="wind-speed">12 km/h</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="label">Pressure</span>
+                            <span class="value" id="pressure">1012 hPa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast-section">
+                    <h3>5-Day Forecast</h3>
+                    <div class="forecast-grid" id="forecast-grid">
+                        <!-- Forecast items injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="error-message" class="error-message hidden">
+                <p>City not found. Please try again.</p>
+            </div>
+        </section>
+
+        <footer class="app-footer">
+            <p>&copy; 2026 Real Time Weather. Powered by OpenWeather API.</p>
+        </footer>
+    </main>
+
+    <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>
