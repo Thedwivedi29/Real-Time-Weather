@@ -2,6 +2,15 @@
 
 A high-end, premium real-time weather application featuring a sleek Red and Black aesthetic, interactive particle backgrounds, and dynamic AI-generated weather sceneries.
 
+---
+
+## 🔴 **[▶ LIVE DEMO — CLICK TO EXPERIENCE IT](https://real-time-weather-ob0g2khv3-gaurang-dwivedis-projects.vercel.app/)** 🔴
+
+> ### 🌐 **[https://real-time-weather-ob0g2khv3-gaurang-dwivedis-projects.vercel.app/](https://real-time-weather-ob0g2khv3-gaurang-dwivedis-projects.vercel.app/)**
+> **No setup needed. Open the link and search any city instantly.**
+
+---
+
 ![Real Time Weather Preview](https://raw.githubusercontent.com/Thedwivedi29/Real-Time-Weather/main/public/images/weather/clear.png)
 
 ## ✨ Features
